@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Room 32 Rebooted</title>
+    <meta name="description" content="A simple, editable launcher for the sites you want on hand." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%237c5cff'/></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <!-- Wordmark is split per letter so it can fade in one letter at a time. -->
+      <a class="logo" href="./" aria-label="Room 32 Rebooted home">
+        <span>R</span><span>O</span><span>O</span><span>M</span><span>3</span><span>2</span>
+      </a>
+      <p class="tagline">Rebooted · pick one, it opens in a new tab</p>
+    </header>
+
+    <main class="wrap">
+      <div class="bar">
+        <h2 class="section-title">All sites</h2>
+        <button id="admin-toggle" class="btn-admin" type="button" aria-expanded="false">🔒 Admin</button>
+      </div>
+
+      <section id="login" class="editor" hidden>
+        <form id="login-form" class="login-form">
+          <div class="field">
+            <label for="f-password">Admin password</label>
+            <input id="f-password" name="password" type="password" required autocomplete="current-password" />
+          </div>
+          <button type="submit" class="btn btn-play">Log in</button>
+        </form>
+      </section>
+
+      <section id="editor" class="editor" hidden>
+        <div class="editor-actions">
+          <button id="add-toggle" class="btn-add" type="button" aria-expanded="false">＋ Add site</button>
+          <button id="manage-toggle" class="btn-manage" type="button">Manage</button>
+          <button id="reset-btn" class="btn-reset" type="button">Reset to defaults</button>
+        </div>
+
+        <div id="add-panel" class="add-panel" hidden>
+          <form id="add-form" class="add-form" autocomplete="off">
+            <div class="field">
+              <label for="f-name">Name</label>
+              <input id="f-name" name="name" type="text" required placeholder="Example" />
+            </div>
+            <div class="field">
+              <label for="f-url">Address</label>
+              <input id="f-url" name="url" type="text" required placeholder="example.com" inputmode="url" />
+            </div>
+            <div class="field">
+              <label for="f-icon">Emoji <span class="opt">(optional)</span></label>
+              <input id="f-icon" name="icon" type="text" maxlength="4" placeholder="🔗" />
+            </div>
+            <div class="field field-wide">
+              <label for="f-desc">Description <span class="opt">(optional)</span></label>
+              <input id="f-desc" name="description" type="text" placeholder="Shown on the site's details page" />
+            </div>
+            <div class="field field-wide form-buttons">
+              <button type="submit" class="btn btn-play">Add site</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <div id="grid" class="grid"></div>
+      <p id="empty" class="empty">Loading…</p>
+    </main>
+
+    <footer class="site-footer">
+      Sites open in a new tab. If one refuses to show, that's the site's own setting, not this page.
+    </footer>
+
+    <script src="js/sites.js"></script>
+    <script src="js/launch.js"></script>
+    <script src="js/home.js"></script>
+  </body>
+</html>
